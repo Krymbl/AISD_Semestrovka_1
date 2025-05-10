@@ -1,4 +1,4 @@
-package Unknown;
+package GraphElPrimo;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class Graph {
     public Graph(int vertexCount) {
         this.vertexCount = vertexCount;
         edges = new ArrayList[vertexCount];
-        int[] vertex = new int[vertexCount];
+        vertex = new int[vertexCount];
         for (int i = 0; i < vertexCount; i++) {
             vertex[i] = i;
             edges[i] = new ArrayList<>();

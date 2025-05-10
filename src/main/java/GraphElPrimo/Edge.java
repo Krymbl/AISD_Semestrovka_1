@@ -1,4 +1,4 @@
-package Unknown;
+package GraphElPrimo;
 
 public class Edge{
     public int first;

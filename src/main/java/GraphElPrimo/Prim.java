@@ -1,22 +1,26 @@
-package Unknown;
+package GraphElPrimo;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class Primo {
+public class Prim {
+    int iterationCount;
     boolean[] isVertex;
     ArrayList<Edge> primo = new ArrayList();
-    int indexStart;
+    int index;
+    long time;
 
-    public Primo(Graph graph) {
-        indexStart = 0;
+    public Prim(Graph graph) {
+        index = 0;
         isVertex = new boolean[graph.vertexCount];
-        isVertex[indexStart] = true;
+        isVertex[index] = true;
 
         PriorityQueue <Edge> priorityQueue = new PriorityQueue<>(Comparator.comparingInt(x -> x.weight));
 
-        for (Edge x : graph.edges[indexStart]) {
+        long startTime = System.nanoTime();
+
+        for (Edge x : graph.edges[index]) {
             priorityQueue.add(x);
         }
 
@@ -32,8 +36,11 @@ public class Primo {
                 if (!isVertex[x.second]) {
                     priorityQueue.add(x);
                 }
+                iterationCount++;
             }
         }
+        long stopTime = System.nanoTime();
+        time = stopTime - startTime;
 
     }
     @Override
@@ -42,6 +49,7 @@ public class Primo {
         for (Edge x : primo) {
             stringBuilder.append(x.first + " <--> " + x.second + " " + x.weight + "\n");
         }
+        stringBuilder.append("Кол-во итераций: " + iterationCount + ". Время работы алгоритма в наносекундах: " + time);
         return stringBuilder.toString();
     }
 }
