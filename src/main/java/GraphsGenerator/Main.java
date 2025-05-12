@@ -19,7 +19,7 @@ public class Main {
 
             maxEdges = n * (n - 1) / 2;
             //edgeCount = n - 1 + new Random().nextInt(maxEdges - (n - 1) + 1); // от (n-1) до max возможных
-            edges = generateConnectedGraph(n, maxEdges, 1, new Random().nextInt(2, 10000));
+            edges = generateConnectedGraph(n, maxEdges, 1, new Random().nextInt(2, 100));
 
             System.out.println("Вершин: " + n);
             for (Edge edge : edges) {

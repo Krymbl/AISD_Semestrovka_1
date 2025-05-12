@@ -30,14 +30,16 @@ public class Prim {
             if (!isVertex[current.second]) {
                 primo.add(current);
                 isVertex[current.second] = true;
+
+                for (Edge x : graph.edges[current.second]) {
+                    if (!isVertex[x.second]) {
+                        priorityQueue.add(x);
+                    }
+                    iterationCount++;
+                }
             }
 
-            for (Edge x : graph.edges[current.second]) {
-                if (!isVertex[x.second]) {
-                    priorityQueue.add(x);
-                }
-                iterationCount++;
-            }
+
         }
         long stopTime = System.nanoTime();
         time = stopTime - startTime;
@@ -46,9 +48,9 @@ public class Prim {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Edge x : primo) {
-            stringBuilder.append(x.first + " <--> " + x.second + " " + x.weight + "\n");
-        }
+//        for (Edge x : primo) {
+//            stringBuilder.append(x.first + " <--> " + x.second + " " + x.weight + "\n");
+//        }
         stringBuilder.append("Кол-во итераций: " + iterationCount + ". Время работы алгоритма в наносекундах: " + time);
         return stringBuilder.toString();
     }

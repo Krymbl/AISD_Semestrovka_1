@@ -8,9 +8,10 @@ import java.io.IOException;
 public class Main {
     public static void main(String[] args) {
         for (int i = 0; i < 70; i++) {
-            File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\AISD\\Semestrovka_1\\src\\main\\java\\Tests");
+            File dir1 = new File("C:\\Users\\dasts\\Desktop\\Itis\\lol\\AISD\\Semestrovka_1\\src\\main\\java\\TestsEasy");
+            int edgeCount = 0;
 
-            try (BufferedReader reader = new BufferedReader(new FileReader(new File(dir1,"Tests" + i + ".txt")))) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(new File(dir1,"TestsEasy" + i + ".txt")))) {
                 String line = reader.readLine();
                 int vertex = Integer.parseInt(line);
                 Graph graph = new Graph(vertex);
@@ -26,9 +27,10 @@ public class Main {
                         edge[j] = Integer.parseInt(list[j]);
                     }
                     graph.addEdge(edge[0], edge[1], edge[2]);
+                    edgeCount++;
                 }
                 Prim prim = new Prim(graph);
-                System.out.println("Номер теста: " + i + ". "+ prim);
+                System.out.println("Номер теста: " + i + ". "+ prim + ". Количество входных данных " + edgeCount);
             } catch (IOException e) {
                 e.printStackTrace();
             }
