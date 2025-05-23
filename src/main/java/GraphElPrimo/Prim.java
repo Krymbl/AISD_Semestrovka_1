@@ -26,7 +26,6 @@ public class Prim {
 
         while (!priorityQueue.isEmpty()) {
             Edge current = priorityQueue.poll();
-
             if (!isVertex[current.second]) {
                 primo.add(current);
                 isVertex[current.second] = true;
@@ -34,10 +33,11 @@ public class Prim {
                 for (Edge x : graph.edges[current.second]) {
                     if (!isVertex[x.second]) {
                         priorityQueue.add(x);
+                        iterationCount++;
                     }
-                    iterationCount++;
                 }
             }
+            iterationCount++;
 
 
         }
@@ -51,7 +51,7 @@ public class Prim {
 //        for (Edge x : primo) {
 //            stringBuilder.append(x.first + " <--> " + x.second + " " + x.weight + "\n");
 //        }
-        stringBuilder.append("Кол-во итераций: " + iterationCount + ". Время работы алгоритма в наносекундах: " + time);
+        stringBuilder.append(time);
         return stringBuilder.toString();
     }
 }
